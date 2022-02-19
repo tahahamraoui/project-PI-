@@ -3,14 +3,12 @@ package tn.esprit.spring.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,25 +25,21 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name="TravelProgram")
-public class TravelProgram implements  Serializable {
+@Table(name="Hotel")
+public class Hotel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name="idTravelProgram")
-	private Integer idTravelProgram ;  
-	private MeansOfTransport MeansOfTransport ; 
-	private int discount ; 
-	private int maxTraveller ; 
-	private float travelPrice ; 
+	@Column(name="idHotel")
 	
+	private Integer idHotel ; 
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="tp")
-	private List<Travel> travel ; 
+	private String nomHotel ;
+	private String locationHotel;
+	private int numStars ; 
 	
-	@OneToOne
-	private Hotel hotel ; 
-	
+	@OneToOne (mappedBy="hotel")
+	private TravelProgram tph; 
 
 }
