@@ -13,17 +13,16 @@
 	<version>1.0</version>
 	<name>Pidev</name>
 	<description>Pidev</description>
-	
 	<properties>
 		<java.version>1.8</java.version>
-		<!-- we added this to remove error -->
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-		<!--  -->
 	</properties>
-	
-	
-	
 	<dependencies>
+	<dependency>
+ <groupId>org.projectlombok</groupId>
+ <artifactId>lombok</artifactId>
+ </dependency>
+ 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -55,29 +54,6 @@
 			<scope>test</scope>
 		</dependency>
 		
-<!--other dependencies to add starts here-->
-
-	<!-- lombok starts here -->
-	<dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-    </dependency>
-   <!-- lombok ends here --> 	
-	<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		
-	<!-- we added this dependancy for database cnxn -->
-	  <dependency>
-         <groupId>org.springframework.boot</groupId>
-         <artifactId>spring-boot-starter-data-rest</artifactId>
-      </dependency>
-    <!-- it ends here -->
-    
-<!--other dependencies to add ends here-->
-
 	</dependencies>
 
 	<build>
@@ -85,12 +61,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin> 
+			</plugin>
+			
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                
-            </plugin>       
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>3.1.0</version>
+</plugin>    
 		</plugins>
 	</build>
 
