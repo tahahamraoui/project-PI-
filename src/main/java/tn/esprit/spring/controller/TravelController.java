@@ -1,5 +1,6 @@
 package tn.esprit.spring.controller;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entity.Travel;
-
+import tn.esprit.spring.entity.User;
 import tn.esprit.spring.services.TravelService;
 
 @RestController
@@ -114,5 +115,23 @@ public List<Travel> findTravelsByUser(@PathVariable("User-id")Long idUser ) {
 	
 return TS.findTravelsByUser(idUser); 
 
+}
+
+
+
+@GetMapping("/findTravelsByID/{id}")
+@ApiOperation(value = "findTravelsByID ")
+@ResponseBody
+public Travel findTravelsByID(@PathVariable("id")Integer id ) {
+	
+return TS.findTravelsByID(id);
+
+}
+@GetMapping("/findTravelPartner/{UserID}/{travelID}")
+@ApiOperation(value = "findTravelPartner ")
+@ResponseBody
+public HashSet<User> findTravelPartner(@PathVariable("UserID") Long UserID , @PathVariable("travelID") Integer travelID )
+{
+	return TS.findTravelPartner(UserID, travelID);
 }
 }

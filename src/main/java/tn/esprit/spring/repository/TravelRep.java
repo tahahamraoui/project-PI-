@@ -1,5 +1,6 @@
 package tn.esprit.spring.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,7 @@ public interface TravelRep extends CrudRepository <Travel,Integer>{
 	
 	@Query("Select t FROM Travel t join t.users bs where bs = :user")
 	List<Travel> findTravelsByUser(@Param("user") User user);
+	@Query("Select t FROM Travel t join t.users bs where bs.domains.nom = :domain2 AND t.StartDate = :StartDate2 AND t.destination = :destination2 ")
+	List<Travel> findTravelPartner(@Param("domain2") String domain2 , @Param("StartDate2") Date StartDate2 , @Param("destination2") String destination2);
 }
+

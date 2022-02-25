@@ -1,10 +1,13 @@
 package tn.esprit.spring.services;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entity.Domain;
 import tn.esprit.spring.entity.Travel;
 import tn.esprit.spring.entity.TravelAgency;
 import tn.esprit.spring.entity.TravelProgram;
@@ -96,5 +99,30 @@ IUserRepository uR ;
 		tR.save(t2);
 		
 	}
+
+	@Override
+	public Travel findTravelsByID(Integer travelID) {
+		// TODO Auto-generated method stub
+		return tR.findById(travelID).orElse(null);
+	}
+
+	@Override
+	public HashSet<User> findTravelPartner(Long UserID , Integer travelID ) {
+		User u = uR.findById(UserID).orElse(null);
+		Travel t1 = tR.findById(travelID).orElse(null);
+	
+		List<Travel> t = tR.findTravelPartner(u.getDomains().getNom(),t1.getStartDate(), t1.getDestination());
+		HashSet<User> partners = new HashSet<User>();
+		for(Travel i : t )
+		{
+			
+			partners.addAll(i.getUsers()); 
+		}
+		partners.remove(u);
+		// TODO Auto-generated method stub
+		return partners;
+	}
+
+	
 
 }
