@@ -36,6 +36,7 @@ public class TravelAgency  implements  Serializable {
 	private String nomTravelAgency;
 	private String TravelAgencylocation ; 
 	private Long numTravelAgency ; 
+	private Long discount ; 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="ta")
 	private List<Travel> travel ; 
 

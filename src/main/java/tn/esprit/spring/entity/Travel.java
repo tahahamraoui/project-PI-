@@ -1,6 +1,7 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -43,11 +44,11 @@ public class Travel implements Serializable {
 	@Column(name="idTravel")
 	private Integer idTravel ; 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date StartDate ; 
+	private LocalDate StartDate ; 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date LastDate ;
+	private LocalDate LastDate ;
 	private String destination ;
-	
+	private String status ; 
 	private String departurePlace ; 
 	private boolean confirmationStatus ; 
 	@JsonIgnore

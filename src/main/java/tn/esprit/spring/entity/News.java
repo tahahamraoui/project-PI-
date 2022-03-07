@@ -1,20 +1,21 @@
 package tn.esprit.spring.entity;
 
-import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -22,33 +23,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name="TravelProgram")
-public class TravelProgram implements  Serializable {
-
+public class News implements Serializable  {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name="idTravelProgram")
-	private Integer idTravelProgram ; 
-	@Enumerated(EnumType.STRING)
-	private MeansOfTransport MeansOfTransport ; 
+	public String _type ; 
+	public String 	didUMean; 
+	public int totalCount; 
+	//@JsonRawValue
+	//private Map<String,String> relatedSearch;
+	 //@SerializedName("value")
 	
-	private int maxTraveller ; 
-	private float travelPrice ; 
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="tp")
-	private List<Travel> travel ; 
-	
-	@ManyToOne
-	private Hotel hotel ; 
+	private List<Value> value ; 
 	
 
 }

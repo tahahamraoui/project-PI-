@@ -1,12 +1,18 @@
 package tn.esprit.spring.services;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.data.repository.query.Param;
+
+import tn.esprit.spring.entity.News;
 import tn.esprit.spring.entity.Travel;
 import tn.esprit.spring.entity.TravelAgency;
 import tn.esprit.spring.entity.TravelProgram;
 import tn.esprit.spring.entity.User;
+import tn.esprit.spring.entity.Value;
 
 
 public interface ITravelService {
@@ -24,4 +30,10 @@ public interface ITravelService {
 	public List<Travel> findTravelsByUser(Long UserID);
 	
 	public HashSet<User> findTravelPartner(Long UserID , Integer travelID);
+	
+	Long Discount(Integer travelAgency );
+	public String blockDestination(); 
+	//public void block();
+	public void block(String destination2);
+
 }

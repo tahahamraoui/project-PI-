@@ -1,5 +1,6 @@
 package tn.esprit.spring.repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +26,17 @@ public interface TravelRep extends CrudRepository <Travel,Integer>{
 	@Query("Select t FROM Travel t join t.users bs where bs = :user")
 	List<Travel> findTravelsByUser(@Param("user") User user);
 	@Query("Select t FROM Travel t join t.users bs where bs.domains.nom = :domain2 AND t.StartDate = :StartDate2 AND t.destination = :destination2 ")
-	List<Travel> findTravelPartner(@Param("domain2") String domain2 , @Param("StartDate2") Date StartDate2 , @Param("destination2") String destination2);
+	List<Travel> findTravelPartner(@Param("domain2") String domain2 , @Param("StartDate2") LocalDate StartDate2 , @Param("destination2") String destination2);
+
+	//@Query("SELECT COUNT(t) FROM Travel t WHERE t.ta = :travelAgency AND t.StartDate BETWEEN :date1 AND :date2")
+	@Query("SELECT t FROM Travel t WHERE t.ta = :travelAgency AND t.StartDate BETWEEN :date2 AND :date1")
+	List<Travel> findByTravelAgencyInMonthAgo(@Param("travelAgency") TravelAgency travelAgency ,  @Param("date1") LocalDate date1 , @Param("date2") LocalDate date2);
+	@Query("Select t FROM Travel t WHERE t.destination = :destination2 ")
+	List<Travel> block ( @Param("destination2") String destination2);
+/*@Query("SELECT f FROM Offer f WHERE f.Title LIKE %?1%" //to search
+    + " OR f.Place LIKE %?1%"
+    + " OR f.Domain LIKE %?1%")
+    //+ " OR CONCAT(p.price, '') LIKE %?1%")
+public List<Offer> search(String keyword)*/
 }
 
