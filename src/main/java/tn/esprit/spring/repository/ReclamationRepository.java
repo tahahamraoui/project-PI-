@@ -16,4 +16,7 @@ public interface ReclamationRepository extends CrudRepository<Reclamation,Intege
 
 	@Query("SELECT ve, Count(ve) as nbre FROM Reclamation ve GROUP BY ve.TypeReclamation")
 	public List<Object> groupReclamations();
+	
+	@Query("SELECT c.TypeReclamation, COUNT(c.TypeReclamation) FROM Reclamation AS c GROUP BY c.TypeReclamation ORDER BY c.TypeReclamation DESC")
+	List<Object[]> countTotalTypeByYear();
 }

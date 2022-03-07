@@ -8,4 +8,5 @@ public interface IReclamationService {
 	String deleteReclamation(Integer idQ);
 	Reclamation updateidReclamation(Reclamation c);
 	Reclamation retrieveidReclamation(int idQ);
+	 List<Object[]> statistic();
 }
