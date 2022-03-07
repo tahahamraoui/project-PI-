@@ -7,7 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -29,6 +36,15 @@ public class Avis implements Serializable {
 	private int idAvis;
 	private int  Nombre;
 	private String descriptionAvis ; 
+	@JsonIgnore
+	@Fetch(value=FetchMode.SELECT)
+	@ManyToOne
+	private Travel travel ; 
+	
+	
+	@OneToOne 
+	private Quiz quiz ; 
+	
 	//private int iduser;
 	@Override
 	public String toString() {

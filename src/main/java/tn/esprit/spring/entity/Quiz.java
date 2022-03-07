@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +22,10 @@ public class Quiz implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="idQ")
 	private int idQ;
+	
+	@OneToOne(mappedBy="quiz")
+	private Avis avis ;
+	
     @OneToMany(mappedBy="quizzz")
     private Set<Question> questions;
 	private String Titre;

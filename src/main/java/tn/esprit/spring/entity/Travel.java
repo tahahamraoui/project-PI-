@@ -60,6 +60,9 @@ public class Travel implements Serializable {
 	@ManyToOne 
 	private TravelAgency ta ; 
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="travel")
+	private List<Avis> avis ; 
+	
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	List<User> users ;
