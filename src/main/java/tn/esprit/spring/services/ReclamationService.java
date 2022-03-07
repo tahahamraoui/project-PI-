@@ -49,7 +49,10 @@ public class ReclamationService implements IReclamationService {
 			return ReclamationRepo.save(c);
 		}
 
-		
+		@Override
+		public  List<Object[]> statistic  () {
+			return ReclamationRepo.countTotalTypeByYear();
+		}
 
 		@Override
 		public Reclamation retrieveidReclamation(int idR) {

@@ -1,6 +1,6 @@
 package tn.esprit.spring.controller;
 import java.util.ArrayList;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -48,6 +48,10 @@ public class ReclamationController {
     public Reclamation getReclamationbyId(@PathVariable int id) {
         return avServ.retrieveidReclamation(id);
     }
+    @GetMapping("/getTypeReclamationStat")
+    public  List<Object[]> statistic  () {
+		return avServ.statistic();
+	}
 /*
     @GetMapping("/getQuantity/{id}")
     public int getQuantity(@PathVariable int id) {
