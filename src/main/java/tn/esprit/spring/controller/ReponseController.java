@@ -37,20 +37,10 @@ public class ReponseController {
         return avServ.updateidReponse(b);
     }
 
-    @GetMapping("/getReponseList")
-    public ArrayList<Reponse> getReponseList() {
-    	for(Reponse l : avServ.retrieveAllReponse()) {
-    		try {
-    			String bg = l.getText().replaceAll("good","*****");
-    			System.out.println(bg);
-    			l.setText(bg);
-    		}catch(NullPointerException e) {
-    			
-    		}
-    	
-    	}
-        return (ArrayList<Reponse>) avServ.retrieveAllReponse();
-    }
+   /* @GetMapping("/getReponseList")
+    public ArrayList<Reponse> getReponseList(){
+    	return avServ.getReponseList();
+    }*/
 
 
     @GetMapping("/getReponse/{id}")

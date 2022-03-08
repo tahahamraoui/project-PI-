@@ -1,5 +1,6 @@
 package tn.esprit.spring.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import tn.esprit.spring.entity.AnalyseAvis;
@@ -16,6 +17,8 @@ public interface IAvisService  {
 	public Avis retrieveAvis(int idAvis);
 	public AnalyseAvis analyseAvis(String avis);
 	public List<String> AvisAnalyser();
+	public ArrayList<Avis> getAvisListbibiol();
+	       
 		
 
 }

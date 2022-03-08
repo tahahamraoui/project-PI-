@@ -10,7 +10,7 @@ import tn.esprit.spring.entity.Question;
 
 @Repository
 public interface QuestionRepository  extends CrudRepository< Question,Integer>  {
-	@Query("SELECT ve, Count(v.Text) as Nbre FROM Reponse v JOIN v.question ve GROUP BY ve.Text")
+	@Query("SELECT v.Text , Count(v.Text) as Nbre FROM Reponse v JOIN v.question ve GROUP BY v.Text")
 	public List<Object[]> NumberReponsesGroupedByQuestions();
 	
 }

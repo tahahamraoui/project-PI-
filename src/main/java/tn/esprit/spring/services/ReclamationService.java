@@ -31,7 +31,7 @@ public class ReclamationService implements IReclamationService {
 
 		@Override
 		public Reclamation addReclamation(Reclamation c) {
-			mailling("marwa.hadidane@esprit.tn","Votre reclamation a ete envoyer nous repondorons après 72hrs" );
+			mailling("marwa.hadidan@esprit.tn","Votre reclamation a ete envoyer nous repondorons après 72hrs" );
 			return ReclamationRepo.save(c); 
 		}
 
@@ -51,9 +51,35 @@ public class ReclamationService implements IReclamationService {
 
 		@Override
 		public  List<Object[]> statistic  () {
+		 List<Object[]> s = ReclamationRepo.countTotalTypeByYear();
+			for(Object[] o : s)
+			{ 
+				System.out.println(o[1]);
+				if(((Long)o[1]) .intValue() >3 )
+				{
+					mailling("marwa.hadidan@esprit.tn","nous avons recu plus que 3 reclamations , il faut bloque ce type de reclamation " );
+				}
+					System.out.println(o[1].getClass());}
+			 
 			return ReclamationRepo.countTotalTypeByYear();
 		}
-
+		
+		
+		
+				
+				
+				
+				
+		@Override
+		public List<Reclamation> search(String keyword){
+	        if (keyword != null) {
+	            return ReclamationRepo.search(keyword);
+	        }
+	        return (List<Reclamation>) ReclamationRepo.findAll();
+	    }
+		
+		
+		
 		@Override
 		public Reclamation retrieveidReclamation(int idR) {
 			return ReclamationRepo.findById(idR).orElse(null);
@@ -90,5 +116,14 @@ public class ReclamationService implements IReclamationService {
 		        e.printStackTrace();
 		    }
 		}
+		
+		
+		@Override
+		public List<Reclamation> FindReclamationByTypeReclamation (String TypeReclamation) {
+			
+			 return ReclamationRepo.FindReclamationByTypeReclamation(TypeReclamation);
+		}
+
+		
 	
 }
