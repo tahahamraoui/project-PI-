@@ -43,6 +43,7 @@ public class User {
 	private String user_lastName;
 	private String user_email; 
 	private String user_password; 
+	
 	@JsonIgnore
 	@Fetch(value=FetchMode.SELECT)
 	@ManyToOne

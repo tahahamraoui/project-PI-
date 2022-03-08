@@ -35,5 +35,7 @@ public interface ITravelService {
 	public String blockDestination(); 
 	//public void block();
 	public void block(String destination2);
+	
+	public  List<Object[]> statistic  (); 
 
 }

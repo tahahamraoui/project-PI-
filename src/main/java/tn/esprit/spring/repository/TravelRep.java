@@ -33,10 +33,10 @@ public interface TravelRep extends CrudRepository <Travel,Integer>{
 	List<Travel> findByTravelAgencyInMonthAgo(@Param("travelAgency") TravelAgency travelAgency ,  @Param("date1") LocalDate date1 , @Param("date2") LocalDate date2);
 	@Query("Select t FROM Travel t WHERE t.destination = :destination2 ")
 	List<Travel> block ( @Param("destination2") String destination2);
-/*@Query("SELECT f FROM Offer f WHERE f.Title LIKE %?1%" //to search
-    + " OR f.Place LIKE %?1%"
-    + " OR f.Domain LIKE %?1%")
-    //+ " OR CONCAT(p.price, '') LIKE %?1%")
-public List<Offer> search(String keyword)*/
+
+	//@Query("SELECT t.destination , COUNT(t.destination) FROM Travel t JOIN t.users u GROUP BY u.domains.nom ORDER BY u.domains.nom DESC")
+	@Query("SELECT u.domains.nom , t.destination FROM Travel t JOIN t.users u GROUP BY u.domains.nom ORDER BY u.domains.nom DESC")
+	List<Object[]> countDestinationByDomainUser();
+
 }
 

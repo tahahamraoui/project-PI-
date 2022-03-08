@@ -35,5 +35,7 @@ public class HotelService implements IHotelService {
 		// TODO Auto-generated method stub
 		return (List<Hotel>) hR.findAll();
 	}
+	
+	
 
 }

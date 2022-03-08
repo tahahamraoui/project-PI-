@@ -157,32 +157,27 @@ public Long Discount(@PathVariable("TravelAgency-id")Integer idTravelAgency)
 	return TS.Discount(idTravelAgency);
 }
 
+
+@PutMapping("/blockTravelByDestinaton/{destination}")
+@ApiOperation(value = "blockTravelByDestinaton")
+@ResponseBody
+public void Discount(@PathVariable("destination") String destination)
+{
+	 TS.block(destination);
+}
+
 @GetMapping("/blockDestination")
-@ApiOperation(value = "block destination ")
+@ApiOperation(value = "block destination suggestion ")
 @ResponseBody
 public String blockDestination( )
 {
-	//InetSocketAddress host = headers.getHost();
-   
-    /*
-	response.addHeader("x-rapidapi-host", "contextualwebsearch-websearch-v1.p.rapidapi.com");
-    
-    response.addHeader("x-rapidapi-key", "77870dab2cmsh950e7229bf17507p158e87jsne665edaf9905");
-    System.out.println(response.get);*/
-	//.asString();
-	/*final String uri = "http://localhost:8080/springrestexample/employees.xml";
-
-    
-    restTemplate.execute(url, POST , requestCallback, responseExtractor)
-    String result = restTemplate.getForObject(uri, String.class);*/
-	/* String url2 ="https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/TrendingNewsAPI?pageNumber=1&pageSize=10&withThumbnails=false&location=us";
-    RestTemplate restTemplate = new RestTemplate();
-    HttpHeaders headers=new HttpHeaders();
-    headers.add("x-rapidapi-host", "contextualwebsearch-websearch-v1.p.rapidapi.com");
-    headers.add("x-rapidapi-key", "77870dab2cmsh950e7229bf17507p158e87jsne665edaf9905");
-    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-    HttpEntity<String> entity=new HttpEntity<String>(headers);
-    return restTemplate.exchange(url2,HttpMethod.GET,entity,String.class).getBody();*/
 	return TS.blockDestination(); 
 }
+
+
+@GetMapping("/statistic")
+@ApiOperation(value = "statistic ")
+public  List<Object[]> statistic  ()
+{
+	return TS.statistic(); }
 }
