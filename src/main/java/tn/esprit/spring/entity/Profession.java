@@ -1,13 +1,14 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -16,15 +17,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)//table mere
+
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="User")
-public class User implements Serializable {
+@Table(name="Profession")
+public class Profession implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -33,24 +35,10 @@ public class User implements Serializable {
 	//cette ligne n'est pas obligatoire  
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	//@Column(name="user_id")
-	private Long user_id;
-	private String name;
-	private String image;
-	private String email; 
-	private String password; 
-	private Boolean connection;
+	private Long id_p;
+	private String name_p;
 	
-	@Enumerated(EnumType.STRING)  
-	Role role;
-	
-	public enum Role{
-		ADMIN, EMPLOYEE, COMPANY
-		}
-	
-	
-	@ManyToOne
-	private Domaine domaine;
-	
-	@ManyToOne
-	private Profession profession;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="profession")
+	private Set <User> user;
+
 }

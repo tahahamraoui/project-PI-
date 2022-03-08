@@ -1,17 +1,30 @@
 package tn.esprit.spring.services;
 
-//import java.util.List;
+import java.util.List;
 
-//import tn.esprit.spring.entity.User;
+import tn.esprit.spring.entity.User;
 
-public class IUserService {
-	//declaration des methodes (specification)
-			//to select all users
-				//List<User> retrieveAllUser();
-				//User addUser(User u);
-				//void deleteUser(String id);
-				//User updateUser(User u);
-			//select a user bien definit
-				//User retrieveUser(String id);
-				
+
+
+
+public interface IUserService {
+
+	List<User> retrieveAllUsers();
+
+	User addUser(User c);
+
+	void deleteUser(Long user_id);
+
+	User updateUser(User c);
+
+	User retrieveUser(Long user_id);
+
+	
+
+
+		
+			
+	
+
 }
+ 
