@@ -14,5 +14,4 @@ public interface  IUserService {
 	User updateUser(User c);
 	User retrieveUser(Long id);
 	boolean verifyEmailToken(Long id); 
-	void Userpdf (long idUser) ;
 }

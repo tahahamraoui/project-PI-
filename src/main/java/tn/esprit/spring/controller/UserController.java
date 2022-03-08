@@ -21,7 +21,7 @@ public class UserController {
 	@Autowired
 	IUserService UserService;
 
-	//http://localhost:8089/SpringMVC/User/retrieve-all-Users
+	//http://localhost:8089/SpringMVC/user/retrieve-all-Users
 	@GetMapping("/retrieve-all-Users")
 	@ResponseBody
 	@ApiOperation(value = "Récupérer la liste des Users")
@@ -52,8 +52,8 @@ public class UserController {
 	//http://localhost:8089/SpringMVC/User/remove-User/{User-id}
 	@DeleteMapping("/remove-User/{User-id}")
 	@ResponseBody
-	public void removeForum(@PathVariable("User-id") Long user) {
-		UserService.deleteUser(user);
+	public void removeForum(@PathVariable("User-id") Long userId) {
+		UserService.deleteUser(userId);
 	}
 	
 	
@@ -65,21 +65,18 @@ public class UserController {
 	return UserService.updateUser(user);
 	}
 
-	
-	
-	//hethi tab3 mail verficaton 
 	@GetMapping(path="/email-verification")
+
 	public boolean verifyEmailToken(@RequestParam(value="id") Long id) {
 
+		
+		
+
+		
+
+		
 		return UserService.verifyEmailToken(id);
 	}
 	
-	
-	// URL : http://localhost:8089/SpringMVC/User/afficherPDF/{idUser}
-	   @GetMapping(value = "/afficherPDF/{idUser}")
-	   public void fournisseurpdf (@PathVariable("idUser") int id) {
-		   
-		   UserService.Userpdf(id);
-	   }
 	
 }

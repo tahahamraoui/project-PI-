@@ -29,6 +29,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
+import tn.esprit.spring.entity.Hotel;
 import tn.esprit.spring.entity.News;
 import tn.esprit.spring.entity.Travel;
 import tn.esprit.spring.entity.TravelAgency;
@@ -184,8 +185,7 @@ IUserRepository uR ;
 		for (Travel t : (List<Travel>) tR.findAll()) {
 			destinations.add(t.getDestination());
 		}
-		System.out.println("___________________destinations__________________________");
-		System.out.println(destinations); 
+		
 		 String url2 ="https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/TrendingNewsAPI?pageNumber=1&pageSize=10&withThumbnails=false&location=us";
 		    RestTemplate restTemplate = new RestTemplate();
 		    HttpHeaders headers=new HttpHeaders();
@@ -240,7 +240,7 @@ IUserRepository uR ;
 	    try {
 	        msg.setFrom(new InternetAddress(fromEmail));
 	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress(mail));
-	        msg.setSubject("Advice");
+	        msg.setSubject("Information");
 	        Multipart emailContent = new MimeMultipart();
 	        MimeBodyPart textBodyPart = new MimeBodyPart();
 	        textBodyPart.setText(message);
@@ -261,8 +261,22 @@ IUserRepository uR ;
 		{
 			t2.setStatus("Canceled");
 			tR.save(t2);
+			for(User u : t2.getUsers())
+			{
+				mailling(u.getUser_email()," your travel is canceled for security problem in the destination ");
+			}
+			
 		}
 		
+	}
+	
+	@Override
+	public  List<Object[]> statistic  () {
+		
+		 List<Object[]> s = tR.countDestinationByDomainUser();
+		
+		
+		return s;
 	}
 
 }
