@@ -22,6 +22,21 @@ public class ReponseService implements IReponseService {
 			return av;
 		}
 
+		/*@Override
+		 public ArrayList<Reponse> getReponseList() {
+		    	for(Reponse l :retrieveAllReponse()) {
+		    		try {
+		    			String bg = l.getText().replaceAll("good","*****");
+		    			System.out.println(bg);
+		    			l.setText(bg);
+		    		}catch(NullPointerException e) {
+		    			
+		    		}
+		    	
+		    	}
+		        return (ArrayList<Reponse>)retrieveAllReponse();
+		    }*/
+		
 		@Override
 		public Reponse addReponse(Reponse c) {
 			return ReponseRepo.save(c); 
@@ -48,6 +63,12 @@ public class ReponseService implements IReponseService {
 			return ReponseRepo.findById(idR).orElse(null);
 		}
 
+		@Override
+		public ArrayList<Reponse> getReponseList() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+ 
 
 	
 }

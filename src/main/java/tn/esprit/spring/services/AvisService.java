@@ -42,6 +42,7 @@ public class AvisService implements IAvisService {
 			}
 			else return "feedback id not found!";
 		}
+		
 
 		@Override
 		public Avis updateAvis(Avis c) {
@@ -92,4 +93,20 @@ public class AvisService implements IAvisService {
 			}
 			return p ;
 		}
+		
+		@Override
+		 public ArrayList<Avis> getAvisListbibiol() {
+		    	for( Avis l :retrieveAllAvis()) {
+		    		try {
+		    			String bg = l.getDescriptionAvis().replaceAll("good","*****");
+		    			System.out.println(bg);
+		    			l.setDescriptionAvis(bg);
+		    		}catch(NullPointerException e) {
+		    			
+		    		}
+		    	
+		    	}
+		        return (ArrayList<Avis>)retrieveAllAvis();
+		    }
+		
 }

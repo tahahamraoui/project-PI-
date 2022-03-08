@@ -52,10 +52,24 @@ public class ReclamationController {
     public  List<Object[]> statistic  () {
 		return avServ.statistic();
 	}
+    
+    @GetMapping("/search")
+	public List<Reclamation> search ( String  keyword) {
+    	  return  this.avServ.search (keyword);
+    }
+    
+  //Recherche
+  	@GetMapping("/FindReclamationByTypeReclamation/{TypeReclamation}")
+  	public List<Reclamation> FindReclamationByTypeReclamation( String TypeReclamation) 
+  	{
+  		return  this.avServ.FindReclamationByTypeReclamation(TypeReclamation);
+  	}
+  	
 /*
     @GetMapping("/getQuantity/{id}")
     public int getQuantity(@PathVariable int id) {
         return avServ.getQuantity(id);
     }*/
 
+    
 }

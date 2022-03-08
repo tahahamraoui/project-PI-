@@ -49,6 +49,7 @@ public class QuestionController {
     public QuestionsWithReponses getQuestionbyId(@PathVariable int id) {
         return avServ.questionsAndReponses(id);
     }
+    
     @GetMapping("/getQuestionsList")
 	@ResponseBody
     public List<Object[]> getQuestionsAndResponseNumbers() {

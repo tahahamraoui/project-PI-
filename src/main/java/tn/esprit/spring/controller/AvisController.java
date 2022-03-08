@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entity.AnalyseAvis;
 import tn.esprit.spring.entity.Avis;
+import tn.esprit.spring.entity.Reponse;
 import tn.esprit.spring.services.AvisService;
 
 @RequestMapping("Avis/")
@@ -49,6 +50,11 @@ public class AvisController {
     @GetMapping("/getAvis/{id}")
     public Avis getAvisbyId(@PathVariable int id) {
         return avServ.retrieveAvis(id);
+    }
+    
+    @PostMapping("/getAvisListbibiol")
+    public ArrayList<Avis> getAvisListbibiol(){
+    	return avServ.getAvisListbibiol();
     }
 
     /*@GetMapping("/getQuantity/{id}")

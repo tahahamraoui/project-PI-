@@ -9,4 +9,6 @@ public interface IReclamationService {
 	Reclamation updateidReclamation(Reclamation c);
 	Reclamation retrieveidReclamation(int idQ);
 	 List<Object[]> statistic();
+	 List<Reclamation> search(String keyword);
+	List<Reclamation> FindReclamationByTypeReclamation (String TypeReclamation);
 }
