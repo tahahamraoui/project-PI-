@@ -55,6 +55,14 @@ public class QuestionController {
     public List<Object[]> getQuestionsAndResponseNumbers() {
         return avServ.ListerLesReponseByQuestions();
     }
+    
+    
+    
+    @GetMapping("/getResultat")
+	@ResponseBody
+    public String getResultat() {
+        return avServ.statistic2();
+    }
 /* 
     @GetMapping("/getQuantity/{id}")
     public int getQuantity(@PathVariable int id) {

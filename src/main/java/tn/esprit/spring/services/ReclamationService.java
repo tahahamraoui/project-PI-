@@ -1,4 +1,4 @@
-package tn.esprit.spring.services;
+     package tn.esprit.spring.services;
 
 import java.util.List;
 import javax.mail.Authenticator;
@@ -58,18 +58,14 @@ public class ReclamationService implements IReclamationService {
 				if(((Long)o[1]) .intValue() >3 )
 				{
 					mailling("marwa.hadidan@esprit.tn","nous avons recu plus que 3 reclamations , il faut bloque ce type de reclamation " );
-				}
-					System.out.println(o[1].getClass());}
+				}}
+					//System.out.println(o[1].getClass());}
 			 
 			return ReclamationRepo.countTotalTypeByYear();
 		}
 		
 		
-		
-				
-				
-				
-				
+			
 		@Override
 		public List<Reclamation> search(String keyword){
 	        if (keyword != null) {

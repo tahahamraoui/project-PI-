@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entity.Reclamation;
@@ -60,9 +61,12 @@ public class ReclamationController {
     
   //Recherche
   	@GetMapping("/FindReclamationByTypeReclamation/{TypeReclamation}")
-  	public List<Reclamation> FindReclamationByTypeReclamation( String TypeReclamation) 
+  	@ResponseBody
+  	public List<Reclamation> FindReclamationByTypeReclamation( String TypeReclamation)
+  	//public List<Reclamation> FindReclamationByTypeReclamation( String TypeReclamation) 
   	{
-  		return  this.avServ.FindReclamationByTypeReclamation(TypeReclamation);
+  		//return  this.avServ.FindReclamationByTypeReclamation(TypeReclamation);
+  		return avServ.FindReclamationByTypeReclamation(TypeReclamation);
   	}
   	
 /*

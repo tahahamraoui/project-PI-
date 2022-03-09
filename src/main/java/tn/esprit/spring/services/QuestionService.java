@@ -45,7 +45,33 @@ public class QuestionService implements IQuestionService {
 
 		public List<Object[]> ListerLesReponseByQuestions(){
 			return QuestionRepo.NumberReponsesGroupedByQuestions();
+			
 		}
+
+		@Override
+		public  String statistic2 () {
+		 List<Object[]> s = QuestionRepo.NumberReponsesGroupedByQuestions();
+		 
+		 
+		 if(((Long)s.get(0)[1])>(Long)s.get(1)[1])
+			 return "voyage non résussi ";
+		 else 
+			 if(((Long)s.get(0)[1])<(Long)s.get(1)[1])
+				 return "voyage réussi ";
+		 else
+			 return "neutre";
+			/*for(Object[] o : s)
+			{}*/
+				/*System.out.println(o[1]);
+				if(((Long)o[1]) .equals() >3 )
+				{
+					mailling("marwa.hadidan@esprit.tn","nous avons recu plus que 3 reclamations , il faut bloque ce type de reclamation " );
+				}
+					System.out.println(o[1].getClass());}*/
+			 
+			//return QuestionRepo.NumberReponsesGroupedByQuestions();
+		}
+		
 
 		@Override
 		public Question retrieveidQuestion(int idR) {

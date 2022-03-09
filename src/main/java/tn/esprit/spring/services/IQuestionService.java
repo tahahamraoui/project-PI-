@@ -10,4 +10,5 @@ public interface IQuestionService {
 	String deleteQuestion(Integer idQ);
 	Question updateidQuestion(Question c);
 	Question retrieveidQuestion(int idQ);
+	 String statistic2 ();
 }

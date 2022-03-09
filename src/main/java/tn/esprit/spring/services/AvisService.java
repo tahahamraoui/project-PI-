@@ -99,7 +99,7 @@ public class AvisService implements IAvisService {
 		    	for( Avis l :retrieveAllAvis()) {
 		    		try {
 		    			String bg = l.getDescriptionAvis().replaceAll("good","*****");
-		    			System.out.println(bg);
+		    			//System.out.println(bg);
 		    			l.setDescriptionAvis(bg);
 		    		}catch(NullPointerException e) {
 		    			

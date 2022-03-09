@@ -18,11 +18,13 @@ public interface ReclamationRepository extends CrudRepository<Reclamation,Intege
 	@Query("SELECT ve, Count(ve) as nbre FROM Reclamation ve GROUP BY ve.TypeReclamation")
 	public List<Object> groupReclamations();
 	
-	@Query("SELECT c.TypeReclamation, COUNT(c.TypeReclamation) FROM Reclamation AS c GROUP BY c.TypeReclamation ORDER BY c.TypeReclamation DESC")
+	@Query("SELECT c.TypeReclamation, COUNT(c.TypeReclamation) FROM Reclamation "
+			+ "AS c GROUP BY c.TypeReclamation "
+			+ "ORDER BY c.TypeReclamation DESC")
 	List<Object[]> countTotalTypeByYear();
 	
-	@Query("SELECT f FROM Reclamation f WHERE f.TypeReclamation LIKE %?1%" //to search
-            + " OR f.date LIKE %?1%")
+	@Query("SELECT f FROM Reclamation f WHERE f.TypeReclamation LIKE %?1%" )//to search
+           // + " OR f.date LIKE %?1%")
            // + " OR f.Domain LIKE %?1%")
             //+ " OR CONCAT(p.price, '') LIKE %?1%")
     public List<Reclamation> search(String TypeReclamation);
