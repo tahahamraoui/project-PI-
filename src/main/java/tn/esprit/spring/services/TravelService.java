@@ -136,7 +136,7 @@ IUserRepository uR ;
 		User u = uR.findById(UserID).orElse(null);
 		Travel t1 = tR.findById(travelID).orElse(null);
 	
-		List<Travel> t = tR.findTravelPartner(u.getDomains().getNom(),t1.getStartDate(), t1.getDestination());
+		List<Travel> t = tR.findTravelPartner(u.getDomaine().getName_d(),t1.getStartDate(), t1.getDestination());
 		HashSet<User> partners = new HashSet<User>();
 		for(Travel i : t )
 		{
@@ -263,7 +263,7 @@ IUserRepository uR ;
 			tR.save(t2);
 			for(User u : t2.getUsers())
 			{
-				mailling(u.getUser_email()," your travel is canceled for security problem in the destination ");
+				mailling(u.getEmail()," your travel is canceled for security problem in the destination ");
 			}
 			
 		}

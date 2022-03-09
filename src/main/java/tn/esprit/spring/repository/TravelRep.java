@@ -25,7 +25,7 @@ public interface TravelRep extends CrudRepository <Travel,Integer>{
 	
 	@Query("Select t FROM Travel t join t.users bs where bs = :user")
 	List<Travel> findTravelsByUser(@Param("user") User user);
-	@Query("Select t FROM Travel t join t.users bs where bs.domains.nom = :domain2 AND t.StartDate = :StartDate2 AND t.destination = :destination2 ")
+	@Query("Select t FROM Travel t join t.users bs where bs.domaine.name_d = :domain2 AND t.StartDate = :StartDate2 AND t.destination = :destination2 ")
 	List<Travel> findTravelPartner(@Param("domain2") String domain2 , @Param("StartDate2") LocalDate StartDate2 , @Param("destination2") String destination2);
 
 	//@Query("SELECT COUNT(t) FROM Travel t WHERE t.ta = :travelAgency AND t.StartDate BETWEEN :date1 AND :date2")
@@ -38,5 +38,8 @@ public interface TravelRep extends CrudRepository <Travel,Integer>{
     + " OR f.Domain LIKE %?1%")
     //+ " OR CONCAT(p.price, '') LIKE %?1%")
 public List<Offer> search(String keyword)*/
+	
+	@Query("SELECT u.domaine.name_d , t.destination FROM Travel t JOIN t.users u GROUP BY u.domaine.name_d ORDER BY u.domaine.name_d DESC")
+	List<Object[]> countDestinationByDomainUser();
 }
 
