@@ -1,6 +1,7 @@
 package tn.esprit.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.Api;
 
@@ -21,7 +22,7 @@ public class InvitationController {
 	//http://localhost:8089/SpringMVC/Invitation/retrieve-all-Invitations
 	@GetMapping("/retrieve-all-Invitations")
 	@ResponseBody
-	@ApiOperation(value = "RÃ©cupÃ©rer la liste des Invitations")
+	@ApiOperation(value = "Récupérer la liste des Invitations")
 	public List<Invitation> getInvitations() {
 	List<Invitation> listInvitations = InvitationService.retrieveAllInvitations();
 	return listInvitations;
@@ -45,7 +46,24 @@ public class InvitationController {
 		}
 	
 	
+	//http://localhost:8089/SpringMVC/Invitation/send-Invitation
+	@PostMapping("/send-Invitation")
+	@ResponseBody
+	public List<Integer> sendInvitations(@RequestBody List<String> emails) {
+		return InvitationService.sendInvitations(emails);
+	}
 	
+	//http://localhost:8089/SpringMVC/Invitation/retrieve-Invitation/8
+		@GetMapping("/accept-Invitation/{Invitation-id}")
+		@ResponseBody
+		public boolean acceptInvitation(@PathVariable("Invitation-id") int InvitationId) {
+		return InvitationService.acceptInvitation(InvitationId);
+		}
+		@GetMapping("/consult-Invitation/{Invitation-id}")
+		@ResponseBody
+		public boolean cunsulter(@PathVariable("Invitation-id") int InvitationId) {
+		return InvitationService.consulterAcceptation(InvitationId);
+		}
 	//http://localhost:8089/SpringMVC/Invitation/remove-Invitation/{Invitation-id}
 	@DeleteMapping("/remove-Invitation/{Invitation-id}")
 	@ResponseBody

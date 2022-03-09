@@ -68,30 +68,15 @@ public class UserController {
 	@GetMapping(path="/email-verification")
 
 	public boolean verifyEmailToken(@RequestParam(value="id") Long id) {
+
+		
+		
+
+		
+
+		
 		return UserService.verifyEmailToken(id);
 	}
 	
-	//URL : //http://localhost:8089/SpringMVC/User/afficherPDF/{user_Id}
-	@GetMapping(value = "/afficherPDF/{user_Id}")
-	public void userpdf (@PathVariable("user_Id") int id) {
-		UserService.userpdf(id);
-	}
-	
-	
-	
-	//http://localhost:8089/SpringMVC/User/FindOfferBySujet
-	@GetMapping("/FindOfferBySujet/{email}")
-	@ResponseBody
-	public List<User> FindOfferBySujet(@PathVariable String email) 
-	{
-		return  UserService.FindOfferBySujet(email);
-	}
-	
-	
-	//http://localhost:8089/SpringMVC/User/getTypeuserStat
-	@GetMapping("/getTypeuserStat")
-	public  List<Object[]> statistic() {
-		return UserService.statistic();
-	}
 	
 }

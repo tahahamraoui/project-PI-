@@ -1,5 +1,4 @@
 package tn.esprit.spring.services;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -7,9 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import net.bytebuddy.asm.Advice.OffsetMapping.Sort;
 import tn.esprit.spring.entity.Domaine;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.IDomaineRepository;
@@ -24,9 +21,7 @@ public class DomaineService implements IDomaineService{
 		
 		
 		@Override
-		public List<Domaine> retrieveAllDomaines(
-				
-				) {
+		public List<Domaine> retrieveAllDomaines() {
 			List<Domaine> d = (List<Domaine>) myRepository.findAll();
 			return d;
 		}
@@ -36,13 +31,37 @@ public class DomaineService implements IDomaineService{
 			return myRepository.save(d);
 		}
 		
+		//*******
 		@Override
-		public Domaine GetDomaine(String d){
-			
-			return myRepository.findByDomainName(d);
-			
+		public String GetDomaine(String d){	
+			return myRepository.findByDomainName(d);	
+		}
+		//*******
+		
+		@Override
+		public Domaine updateDomaine(Domaine d){
+			return myRepository.save(d);
 		}
 		
+		@Override
+		public Domaine retrieveDomaine(Long id_d){
+			Optional<Domaine> d = myRepository.findById(id_d);
+			Domaine d1 = d.get();
+			return d1;
+		}
+
+		@Override
+		public List<User> findByDomainUser(String domaineName) {
+			List<User> u = myRepository.findByDomainUser(domaineName);
+			return u;
+		}
 		
+		@Override
+		public String findByDomainWord(String mot) {
+			return myRepository.findByDomainMot(mot);
+			 
+		}
+
+	
 
 }

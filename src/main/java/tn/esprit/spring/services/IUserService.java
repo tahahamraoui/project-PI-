@@ -14,7 +14,4 @@ public interface  IUserService {
 	User updateUser(User c);
 	User retrieveUser(Long id);
 	boolean verifyEmailToken(Long id); 
-	void userpdf(long User_Id);
-	List<User> FindOfferBySujet(String email);
-	List<Object[]> statistic();
 }
